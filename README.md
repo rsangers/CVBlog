@@ -9,20 +9,22 @@ MedMNIST is a collection of ten medical imaging datasets. Following the approach
 ### Elastic deformation
 
 ### Architecture
-In the paper by [2] the authors provide performance of baseline models, such as ResNet-15 or ResNet-50, on their datasets. In order to be able to compare our results with the baseline, we will also use a ResNet-18 as our model architecture. The only changes we make are in the way the model is trained an the way the loss function is defined, namely as a Siamese Network.
+In the paper by [2] the authors provide performance of baseline models, among others ResNet-18 or ResNet-50, on their datasets. In order to be able to compare our results with the baseline, we will also use a ResNet-18 as our model architecture. The only changes we make are in the way the model is trained an the way the loss function is defined, namely as a Siamese Network.
 
 ## Results
 
 ### Training loop
 
 ### Hyperparameter search
-In our current architecture and network training method we have two hyperparameters: \sigma and \alpha. \sigma denotes the degree to which we deform input images when training for consistency. More specifically the elastic deformation method we use requires an input of normally distributed noise, and \sigma denotes the standard deviation of this normal distribution. A higher value for \sigma results in more strongly deformed input images, which means that our network will try to learn invariance to strong deformations. On the other hand, lower \sigma values will teach the network invariance to more subtle deformations. \alpha is a measure for how large the influence of the consistency loss is relative to the supervised loss based on the training labels. Higher values for \alpha will make the network prioritize consistency under elastic deformation more, over correct predictions. For lower \alpha values it's the other way around.
+In our current architecture and network training method we have two hyperparameters: σ and α. σ denotes the degree to which we deform input images when training for consistency. More specifically the elastic deformation method we use requires an input of normally distributed noise, and σ denotes the standard deviation of this normal distribution. A higher value for σ results in more strongly deformed input images, which means that our network will try to learn invariance to strong deformations. On the other hand, lower σ-values will teach the network invariance to more subtle deformations. α is a measure for how large the influence of the consistency loss is relative to the supervised loss based on the training labels. Higher values for α will make the network prioritize consistency under elastic deformation more, over correct predictions. For lower α values it's the other way around.
 
-In order to find the right combination of \alpha and \sigma values, we perform a grid search. In a grid search we train and test our model with \alpha values ranging from \[0.2, 0.4, ..., 2.0\] and \sigma values ranging from \[0.05, 0.10, ..., 0.50\]. Each model is trained on the train set (80% ? of the data) and validated on the validation set (5% ? of the data). The accuracies achieved by each trained model are shown below:
+In order to find the right combination of α and σ values, we perform a grid search on the BreastMNIST dataset. In a grid search we train and test our model with α values ranging from \[0.2, 0.4, ..., 2.0\] and σ-values ranging from \[0.30, 0.35, ..., 0.50\]. σ-values from \[0.05, 0.10, ..., 0.25\] were considered suboptimal based on a previous experiment (data not shown) and excluded from the grid-search. Each model is trained on the train set (70% of the data) and validated on the validation set (10% of the data). The accuracies achieved by each trained model are shown below:
 
 -- GRID SEARCH MATRIX --
 
-From this grid we chose the optimal values for \sigma and \alpha an we tested a model with these hyperparameter settings on the test set (15% ? of the data).
+![grid_search_breast](grid_search_breast.jpg)
+
+From this grid we chose the optimal values for σ and α an we tested a model with these hyperparameter settings on the test set (20% of the data).
 
 ### Comparison with baseline
 
@@ -31,6 +33,8 @@ From this grid we chose the optimal values for \sigma and \alpha an we tested a 
 
 ## References
 [1] Chicco, Davide. "Siamese neural networks: An overview." Artificial Neural Networks (2021): 73-94.
+
 [2] Yang, J., Shi, R., Ni, B., 2021. "MedMNIST Classification Decathlon: A Lightweight AutoML Benchmark for Medical Image Analysis", in: 2021 IEEE 18th International Symposium on Biomedical Imaging (ISBI).
+
 [3] LeCun, Y. Cortes, C. and Burges, C.J.C. "The MNIST database of handwritten digits". http://yann.lecun.com/exdb/mnist/
 
