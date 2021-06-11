@@ -5,8 +5,8 @@ In the field of medical imaging, acquiring training data is in general costly, e
 ## Methods
 
 ### MedMNIST
-MedMNIST is a collection of ten medical imaging datasets. Following the approach by the MNIST dataset, the images in this dataset have been standardized and preprocessed to 28x28 pixel images with the goal of making a lightweight standardized classification dataset. These ten datasets are of different modalities, ranging from organ classification (OrganMNIST) to disease classification in chest x-ray images (ChestMNIST). This thereby makes it possible to test a classification approach on a wide range of data. We have chosen this collection of datasets because it allows for rapid prototyping and training without the need of day-long computations. Moreover, the field of medical imaging is a natural application domain for our proposed method: consistency under elastic deformation.
-<img src="medmnist_overview.PNG" alt="medmnist_overview" width="200"/>
+MedMNIST is a collection of ten medical imaging datasets. Following the approach by the MNIST dataset, the images in this dataset have been standardized and preprocessed to 28x28 pixel images with the goal of making a lightweight standardized classification dataset. These ten datasets are of different modalities, ranging from organ classification (OrganMNIST) to disease classification in chest x-ray images (ChestMNIST). This thereby makes it possible to test a classification approach on a wide range of data. We have chosen this collection of datasets because it allows for rapid prototyping and training without the need of day-long computations. Moreover, the field of medical imaging is a natural application domain for our proposed method: consistency under elastic deformation.<br />
+<img src="medmnist_overview.PNG" alt="medmnist_overview" width="600"/>
 
 ### Elastic deformation
 
