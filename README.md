@@ -8,6 +8,9 @@ In the field of medical imaging, acquiring training data is in general costly, e
 MedMNIST is a collection of ten medical imaging datasets, which have been preprocessed to 28x28 pixel images with the goal of making a lightweight standardized classification dataset. These ten datasets are of different modalities, ranging from organ classification (OrganMNIST) to disease classification in chest x-ray images. This thereby makes it possible to test a classification approach on a wide range of data. We have chosen this collection of datasets because it allows for rapid prototyping and training without the need of day-long computations. Moreover, the field of medical imaging is a natural application domain for our proposed method: consistency under elastic deformation.
 ### Elastic deformation
 
+### Architecture
+In the paper by [2] the authors provide performance of baseline models, such as ResNet-15 or ResNet-50, on their datasets. In order to be able to compare our results with the baseline, we will also use a ResNet-18 as our model architecture. The only changes we make are in the way the model is trained an the way the loss function is defined, namely as a Siamese Network.
+
 ## Results
 
 ### Training loop
@@ -28,3 +31,4 @@ From this grid we chose the optimal values for \sigma and \alpha an we tested a 
 
 ## References
 [1] Chicco, Davide. "Siamese neural networks: An overview." Artificial Neural Networks (2021): 73-94.
+[2] Yang, J., Shi, R., Ni, B., 2021. "MedMNIST Classification Decathlon: A Lightweight AutoML Benchmark for Medical Image Analysis", in: 2021 IEEE 18th International Symposium on Biomedical Imaging (ISBI).
