@@ -5,7 +5,7 @@ In the field of medical imaging, acquiring training data is in general costly, e
 ## Methods
 
 ### MedMNIST
-
+MedMNIST is a collection of ten medical imaging datasets, which have been preprocessed to 28x28 pixel images with the goal of making a lightweight standardized classification dataset. These ten datasets are of different modalities, ranging from organ classification (OrganMNIST) to disease classification in chest x-ray images. This thereby makes it possible to test a classification approach on a wide range of data. We have chosen this collection of datasets because it allows for rapid prototyping and training without the need of day-long computations. Moreover, the field of medical imaging is a natural application domain for our proposed method: consistency under elastic deformation.
 ### Elastic deformation
 
 ## Results
@@ -13,14 +13,13 @@ In the field of medical imaging, acquiring training data is in general costly, e
 ### Training loop
 
 ### Hyperparameter search
-In our current architecture and network training method we have two hyperparameters: σ and α. σ denotes the degree to which we deform input images when training for consistency. More specifically the elastic deformation method we use requires an input of normally distributed noise, and σ denotes the standard deviation of this normal distribution. A higher value for σ results in more strongly deformed input images, which means that our network will try to learn invariance to strong deformations. On the other hand, lower σ-values will teach the network invariance to more subtle deformations. α is a measure for how large the influence of the consistency loss is relative to the supervised loss based on the training labels. Higher values for α will make the network prioritize consistency under elastic deformation more, over correct predictions. For lower α values it's the other way around.
+In our current architecture and network training method we have two hyperparameters: \sigma and \alpha. \sigma denotes the degree to which we deform input images when training for consistency. More specifically the elastic deformation method we use requires an input of normally distributed noise, and \sigma denotes the standard deviation of this normal distribution. A higher value for \sigma results in more strongly deformed input images, which means that our network will try to learn invariance to strong deformations. On the other hand, lower \sigma values will teach the network invariance to more subtle deformations. \alpha is a measure for how large the influence of the consistency loss is relative to the supervised loss based on the training labels. Higher values for \alpha will make the network prioritize consistency under elastic deformation more, over correct predictions. For lower \alpha values it's the other way around.
 
-In order to find the right combination of α and σ values, we perform a grid search on the BreastMNIST dataset. In a grid search we train and test our model with α values ranging from \[0.2, 0.4, ..., 2.0\] and σ-values ranging from \[0.30, 0.35, ..., 0.50\]. σ-values from \[0.05, 0.10, ..., 0.25\] were considered suboptimal based on a previous experiment (data not shown) and excluded from the grid-search. Each model is trained on the train set (70% of the data) and validated on the validation set (10% of the data). The accuracies achieved by each trained model are shown below:
+In order to find the right combination of \alpha and \sigma values, we perform a grid search. In a grid search we train and test our model with \alpha values ranging from \[0.2, 0.4, ..., 2.0\] and \sigma values ranging from \[0.05, 0.10, ..., 0.50\]. Each model is trained on the train set (80% ? of the data) and validated on the validation set (5% ? of the data). The accuracies achieved by each trained model are shown below:
 
 -- GRID SEARCH MATRIX --
-![grid_search_breast](grid_search_breast.jpg)
 
-From this grid we chose the optimal values for σ and α an we tested a model with these hyperparameter settings on the test set (20% of the data).
+From this grid we chose the optimal values for \sigma and \alpha an we tested a model with these hyperparameter settings on the test set (15% ? of the data).
 
 ### Comparison with baseline
 
