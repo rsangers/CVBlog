@@ -8,6 +8,9 @@ In the field of medical imaging, acquiring training data is in general costly, e
 
 ### Elastic deformation
 
+### Architecture
+In the paper by [2] the authors provide performance of baseline models, such as ResNet-15 or ResNet-50, on their datasets. In order to be able to compare our results with the baseline, we will also use a ResNet-18 as our model architecture. The only changes we make are in the way the model is trained an the way the loss function is defined, namely as a Siamese Network.
+
 ## Results
 
 ### Training loop
@@ -29,3 +32,4 @@ From this grid we chose the optimal values for σ and α an we tested a model wi
 
 ## References
 [1] Chicco, Davide. "Siamese neural networks: An overview." Artificial Neural Networks (2021): 73-94.
+[2] Yang, J., Shi, R., Ni, B., 2021. "MedMNIST Classification Decathlon: A Lightweight AutoML Benchmark for Medical Image Analysis", in: 2021 IEEE 18th International Symposium on Biomedical Imaging (ISBI).
