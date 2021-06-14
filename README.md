@@ -18,10 +18,10 @@ In the paper by [2] the authors provide performance of baseline models, among ot
 
 ## Results
 
-### Training epochs curve
-Plots of number of epochs vs auc and accuracy of method: based on this, we have chosen that 25 epochs should be enough.
+### Learning curve
+In order to determine how many epochs were necessary to converge, we plotted a learning curve on the breast sub-dataset of the MedMNIST. We chose this dataset as it was limited in size and thus less computationally expensive to experiment on. We found that 25 epochs was enough to reach convergence. We used this number of epochs across our experiments in this blog and across various sub-datasets. Of course, the assumption that this optimal number of epochs generalizes across the various datasets is unlikely to hold perfectly. Ideally you would want to plot learning curves for the other datasets as well, but this was out of the scope of the present study.
 
-<img src="learning_curve_siamese.png" alt="grid search breast avg and auc" width="600"/>
+<img src="learning_curve_siamese.png" alt="grid search breast avg and auc" width="450"/>
 
 ### Hyperparameter search
 In our current architecture and network training method we have two hyperparameters: σ and α. σ denotes the degree to which we deform input images when training for consistency. More specifically the elastic deformation method we use requires an input of normally distributed noise, and σ denotes the standard deviation of this normal distribution. A higher value for σ results in more strongly deformed input images, which means that our network will try to learn invariance to strong deformations. On the other hand, lower σ-values will teach the network invariance to more subtle deformations. α is a measure for how large the influence of the consistency loss is relative to the supervised loss based on the training labels. Higher values for α will make the network prioritize consistency under elastic deformation more, over correct predictions. For lower α values it's the other way around.
