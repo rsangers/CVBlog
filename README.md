@@ -32,10 +32,12 @@ In order to find the right combination of α and σ values, we perform a grid se
 From this grid we chose the optimal values for σ and α an we tested a model with these hyperparameter settings on the test set (20% of the data).
 
 ### Training data curve
-Breast graph with partitions 0.2-1.0: compare acc and auc of original and elastic
+We have the hypothesis that our semi-supervised training method will work especially well in the low-data regime. Our technique will help to enforce consistency of classification under elastic deformation, and will therefore be especially helpful in situations where there is only a limited amount of training data available. We have tested this by training our model with various amounts of training data available, ranging from 20% to 100% of the BreastMNIST dataset. We then compare the results achieved using the original training method and our siamese network approach, to see how their performance degrades when there is a smaller amount of data available. These results are shown in the figures below, where we take the average over 5 training runs to counteract stochasticity in training.
 
 <img src="Training data acc curve.png" alt="training data acc" width="300"/>
 <img src="Training data auc curve.png" alt="training data auc" width="300"/>
+
+In the figure, we can see that the performance of both methods naturally degrades for smaller amounts of data. We do however see a significant difference in the relative degradation of both methods: while the original training model achieves an accuracy of only 36% on 20% of the training data, our proposed method still scores 'okay' with an accuracy of 70%. A similar difference can be seen for the Area Under Curve performance. Moreover, it seems that enforcing the elastic deform consistency using our chosen parameters in general achieves a slightly higher accuracy and AUC than without this method, regardless of the amount of training data available.
 
 ### Comparison with baseline
 Compare accuracy and auc of original and elastic method on 20% of data.
