@@ -17,6 +17,9 @@ In the paper by [2] the authors provide performance of baseline models, among ot
 
 ## Results
 
+### Training curve
+Plots of number of epochs vs auc and accuracy of method: based on this, we have chosen that 25 epochs should be enough.
+
 ### Training loop
 Breast graph with partitions 0.2-1.0: compare acc and auc of original and elastic
 ### Hyperparameter search
