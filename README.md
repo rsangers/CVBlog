@@ -11,7 +11,7 @@ MedMNIST is a collection of ten medical imaging datasets. Following the approach
 <img src="medmnist_overview.PNG" alt="medmnist_overview" width="600"/>
 
 ### Elastic deformation
-The choice for learning equivariance under elastic deformation was based on promising results by [4] on the JSRT X-ray dataset. We hypothesis that ...
+The choice for learning equivariance under elastic deformation was based on promising results by [4] on the JSRT X-ray dataset. We hypothesis that with elastic deformation we can model anatomical variations that are present between patients or even between images of the same patient in subtly different positions. For this reason, we expect that such a siamese network learning equivariance under elastic deformation would also increase performance on other datasets, such as MedMNIST. We especially expect good results in the OrganMNIST sub-dataset, as in CT scans the organs might be deformed a little due to the way a patient is positioned or, again, due to anatomical difference between patients.
 
 ### Architecture
 In the paper by [2] the authors provide performance of baseline models, among others ResNet-18 or ResNet-50, on their datasets. In order to be able to compare our results with the baseline, we will also use a ResNet-18 as our model architecture. The only changes we make are in the way the model is trained and the way the loss function is defined, namely as a Siamese Network.
@@ -26,7 +26,7 @@ In our current architecture and network training method we have two hyperparamet
 
 In order to find the right combination of α and σ values, we perform a grid search on the BreastMNIST dataset. In a grid search we train and test our model with α values ranging from \[0.2, 0.4, ..., 2.0\] and σ-values ranging from \[0.30, 0.35, ..., 0.50\]. σ-values from \[0.05, 0.10, ..., 0.25\] were considered suboptimal based on a previous experiment (data not shown) and excluded from the grid-search. Each model is trained on the train set (70% of the data) and validated on the validation set (10% of the data). The accuracies and ROC AUC values achieved by each trained model are shown below:
 
-<img src="breast_grid_search_avg_auc.png" alt="grid search breast avg and auc" width="300"/>
+<img src="breast_grid_search_avg_auc.png" alt="grid search breast avg and auc" width="600"/>
 
 Both the accuracies as well as the AUC values are important measures for the performance of our model. For this reason we determine the average between the accuracy and the AUC for each model (data not shown), and subsequently the best model is chosen based on which average is the highest. The optimal hyperparameters are the ones of the best model, which turns out to be α = 1.0 and σ = 0.35. We will use these hyperparameter settings for other datasets as well.
 
