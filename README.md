@@ -40,7 +40,11 @@ We have the hypothesis that our semi-supervised training method will work especi
 In the figure, we can see that the performance of both methods naturally degrades for smaller amounts of data. We do however see a significant difference in the relative degradation of both methods: while the original training model achieves an accuracy of only 36% on 20% of the training data, our proposed method still scores 'okay' with an accuracy of 70%. A similar difference can be seen for the Area Under Curve performance. Moreover, it seems that enforcing the elastic deform consistency using our chosen parameters in general achieves a slightly higher accuracy and AUC than without this method, regardless of the amount of training data available.
 
 ### Comparison with baseline
-Compare accuracy and auc of original and elastic method on 20% of data.
+We have also looked if our elastic deformation consistency method outperforms the original training method on all four datasets. In the previous subchapter, we have already seen that this holds for the BreastMNIST dataset, but because the four datasets are of different modalities, it might be interesting to see if we can come to any general conclusions. We have therefore trained models following the original or elastic deformation method on 20% of the training data available, which is the data-regime on which we think our method might be the most beneficial. The 5-run accuracy and AUC performance have been summarized in the table below.
+
+<img src="Baseline comparison.PNG" alt="baseline comparison" width="600"/>
+
+From this table, we see that our method achieves the highest improvement on the BreastMNIST dataset. Moreover, it achieves a slight improvement on the PneumoniaMNIST and OrganMNIST dataset, while it is slightly outperformed on the ChestMNIST dataset. It is however hard to say conclude what causes these performance differences: this could be because elastic deformation consistency in general holds the most for the BreastMNIST dataset, although this is not what we hypothesized. Another explanation could be because we have tuned the α and σ hyperparameters specifically on the BreastMNIST dataset, and that these values do not generalize to the other datasets.
 
 ### Discussion
 - Difference between sigma=alpha=0 and original: due to loss function
