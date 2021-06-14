@@ -21,6 +21,8 @@ In the paper by [2] the authors provide performance of baseline models, among ot
 ### Training epochs curve
 Plots of number of epochs vs auc and accuracy of method: based on this, we have chosen that 25 epochs should be enough.
 
+<img src="learning_curve_siamese.png" alt="grid search breast avg and auc" width="600"/>
+
 ### Hyperparameter search
 In our current architecture and network training method we have two hyperparameters: σ and α. σ denotes the degree to which we deform input images when training for consistency. More specifically the elastic deformation method we use requires an input of normally distributed noise, and σ denotes the standard deviation of this normal distribution. A higher value for σ results in more strongly deformed input images, which means that our network will try to learn invariance to strong deformations. On the other hand, lower σ-values will teach the network invariance to more subtle deformations. α is a measure for how large the influence of the consistency loss is relative to the supervised loss based on the training labels. Higher values for α will make the network prioritize consistency under elastic deformation more, over correct predictions. For lower α values it's the other way around.
 
@@ -34,8 +36,8 @@ Both the accuracies as well as the AUC values are important measures for the per
 ### Training data curve
 We have the hypothesis that our semi-supervised training method will work especially well in the low-data regime. Our technique will help to enforce consistency of classification under elastic deformation, and will therefore be especially helpful in situations where there is only a limited amount of training data available. We have tested this by training our model with various amounts of training data available, ranging from 20% to 100% of the BreastMNIST dataset. We then compare the results achieved using the original training method and our siamese network approach, to see how their performance degrades when there is a smaller amount of data available. These results are shown in the figures below, where we take the average over 5 training runs to counteract stochasticity in training.
 
-<img src="Training data acc curve.png" alt="training data acc" width="300"/>
-<img src="Training data auc curve.png" alt="training data auc" width="300"/>
+<img src="data_curve_accuracies_confidence.png" alt="training data acc" width="300"/>
+<img src="data_curve_aucs_confidence.png" alt="training data auc" width="300"/>
 
 In the figure, we can see that the performance of both methods naturally degrades for smaller amounts of data. We do however see a significant difference in the relative degradation of both methods: while the original training model achieves an accuracy of only 36% on 20% of the training data, our proposed method still scores 'okay' with an accuracy of 70%. A similar difference can be seen for the Area Under Curve performance. Moreover, it seems that enforcing the elastic deform consistency using our chosen parameters in general achieves a slightly higher accuracy and AUC than without this method, regardless of the amount of training data available.
 
