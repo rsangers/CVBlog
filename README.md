@@ -34,6 +34,9 @@ From this grid we chose the optimal values for σ and α an we tested a model wi
 ### Training data curve
 Breast graph with partitions 0.2-1.0: compare acc and auc of original and elastic
 
+<img src="Training data acc curve" alt="training data acc" width="300"/>
+<img src="Training data auc curve" alt="training data auc" width="300"/>
+
 ### Comparison with baseline
 Compare accuracy and auc of original and elastic method on 20% of data.
 
