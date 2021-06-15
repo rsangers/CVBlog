@@ -49,6 +49,7 @@ We have also looked if our elastic deformation consistency method outperforms th
 From this table, we see that our method achieves the highest improvement on the BreastMNIST dataset. Moreover, it achieves a slight improvement on the PneumoniaMNIST and OrganMNIST dataset, while it is slightly outperformed on the ChestMNIST dataset. It is however hard to say conclude what causes these performance differences: this could be because elastic deformation consistency in general holds the most for the BreastMNIST dataset, although this is not what we hypothesized. Another explanation could be because we have tuned the α and σ hyperparameters specifically on the BreastMNIST dataset, and that these values do not generalize to the other datasets.
 
 ### Discussion
+In our elastic deformation approach, we use a KL-divergence loss for the supervised as well as the unsupervised loss, while the original MedMNIST paper uses a cross-entropy loss. We wanted to evaluate what effect using this different loss function has on our results, and for this sake we have also compared the original approach (as in the MedMNIST paper) with a similar approach that only differs in using a KL divergence loss function. 
 - Difference between sigma=alpha=0 and original: due to loss function
 - We have validated that we can reproduce original results with original method
 
