@@ -46,7 +46,7 @@ We have also looked if our elastic deformation consistency method outperforms th
 
 <img src="Baseline comparison.PNG" alt="baseline comparison" width="600"/>
 
-From this table, we see that our method achieves the highest improvement on the BreastMNIST dataset. Moreover, it achieves a slight improvement on the PneumoniaMNIST and OrganMNIST dataset, while it is slightly outperformed on the ChestMNIST dataset. It is however hard to say conclude what causes these performance differences: this could be because elastic deformation consistency in general holds the most for the BreastMNIST dataset, although this is not what we hypothesized. Another explanation could be because we have tuned the α and σ hyperparameters specifically on the BreastMNIST dataset, and that these values do not generalize to the other datasets.
+From this table, we see that our method achieves the highest improvement on the BreastMNIST dataset. Moreover, it achieves a slight improvement on the PneumoniaMNIST and OrganMNIST dataset, while it is slightly outperformed on the ChestMNIST dataset. It is however hard to say conclude what causes these performance differences: this could be because elastic deformation consistency in general holds the most for the BreastMNIST dataset, although this is not what we hypothesized. Another explanation could be that we have tuned the α and σ hyperparameters specifically on the BreastMNIST dataset, and that these values do not generalize to the other datasets.
 
 ### Discussion
 In our elastic deformation approach, we use a KL-divergence loss for the supervised as well as the unsupervised loss, while the original MedMNIST paper uses a cross-entropy loss. We wanted to evaluate what effect using this different loss function has on our results, and for this sake we have also compared the original approach (as in the MedMNIST paper) with a similar approach that only differs in using a KL divergence loss function. 
@@ -54,7 +54,7 @@ In our elastic deformation approach, we use a KL-divergence loss for the supervi
 - We have validated that we can reproduce original results with original method
 
 ## Conclusions
-
+After seeing some promising results by [4] on the JSRT X-ray dataset, we set out to see whether such results would generalize to other medical imaging datasets, such as MedMNIST [2]. We did find some promising results, especially on the BreastMNIST subset of the data. We also identified some topics for further exploration, such as exploring the effect of invariance to elastic deformation on any of the remaining six datasets, or for example hyperparameter tuning on other subsets of the data. All in all we hope that the our research provides more insight in the domain of medical imaging and siamese networks.
 
 ## References
 [1] Chicco, Davide. "Siamese neural networks: An overview." Artificial Neural Networks (2021): 73-94.
