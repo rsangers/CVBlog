@@ -18,7 +18,7 @@ In the paper by [2] the authors provide performance of baseline models, among ot
 
 ## Results
 
-### Learning curve
+### Training curve
 In order to determine how many epochs were necessary to converge, we plotted a learning curve on the breast sub-dataset of the MedMNIST (see figure below). We chose this dataset as it was limited in size and thus less computationally expensive to experiment on. The red line indicates the accuracy of the model and the blue line the ROC AUC value. We found that 25 epochs was enough to reach convergence. We used this number of epochs across our experiments in this blog and across various sub-datasets. Of course, the assumption that this optimal number of epochs generalizes across the various datasets is unlikely to hold perfectly. Ideally you would want to plot learning curves for the other datasets as well, but this was out of the scope of the present study.
 
 <img src="learning_curve_siamese.png" alt="grid search breast avg and auc" width="450"/>
@@ -33,7 +33,7 @@ In order to find the right combination of α and σ values, we perform a grid se
 Both the accuracies as well as the AUC values are important measures for the performance of our model. For this reason we determine the average between the accuracy and the AUC for each model (data not shown), and subsequently the best model is chosen based on which average is the highest. The optimal hyperparameters are the ones of the best model, which turns out to be α = 1.0 and σ = 0.35. We will use these hyperparameter settings for other datasets as well.
 
 
-### Training data curve
+### Learning curve
 We have the hypothesis that our semi-supervised training method will work especially well in the low-data regime. Our technique will help to enforce consistency of classification under elastic deformation, and will therefore be especially helpful in situations where there is only a limited amount of training data available. We have tested this by training our model with various amounts of training data available, ranging from 20% to 100% of the BreastMNIST training dataset. We then compare the results achieved using the original training method and our siamese network approach, to see how their performance degrades when there is a smaller amount of data available. These results are shown in the figures below, where we take the average over 5 training runs to counteract stochasticity in training.
 
 <img src="data_curve_accuracies_confidence.png" alt="training data acc" width="300"/>
