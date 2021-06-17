@@ -54,6 +54,11 @@ In our elastic deformation approach, we use a KL-divergence loss for the supervi
 ## Conclusions
 After seeing some promising results by [4] on the JSRT X-ray dataset, we set out to see whether such results would generalize to other medical imaging datasets, such as MedMNIST [2]. We did find some promising results, especially on the BreastMNIST subset of the data. We also identified some topics for further exploration, such as exploring the effect of invariance to elastic deformation on any of the remaining six datasets, or for example hyperparameter tuning on other subsets of the data. All in all we hope that the our research provides more insight in the domain of medical imaging and siamese networks.
 
+## Code availability
+All code used for the present research is available via the following links:
+- Training ResNet-18 on MedMNIST: https://drive.google.com/file/d/1Np-hT4Tcqanhe2JT6iODx01CVFVVM0bN/view?usp=sharing
+- Training Siamese ResNet-18 on MedMNIST: https://drive.google.com/file/d/1WuoyE3mSQ_NPc2KZJNgcsdAl4F_skvZk/view?usp=sharing
+
 ## References
 [1] Chicco, Davide. "Siamese neural networks: An overview." Artificial Neural Networks (2021): 73-94.
 
